@@ -4,55 +4,33 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 import ScrollAnimation from './ScrollAnimation';
 import { ArrowRight, User, Building2, Landmark } from 'lucide-react';
-
 const ServicesSection = () => {
-  const services = [
-    {
-      id: 1,
-      title: 'Consultoria Pessoa Física',
-      description: 'Auxiliamos pessoas a organizarem suas finanças e tomarem decisões estratégicas para garantir mais segurança, eficiência e crescimento patrimonial.',
-      features: [
-        'Planejamento financeiro pessoal',
-        'Estruturação de investimentos',
-        'Planejamento tributário',
-        'Assessoria em previdência',
-      ],
-      icon: User,
-      slug: 'pessoa-fisica',
-      color: 'from-purple-500 to-pink-500',
-    },
-    {
-      id: 2,
-      title: 'Consultoria Empresas',
-      description: 'Oferecemos soluções em gestão, eficiência tributária e tecnologia, ajudando empresas a reduzir custos, crescer de forma sustentável e se manterem competitivas no mercado.',
-      features: [
-        'Gestão e otimização financeira',
-        'Diagnóstico de processos internos',
-        'Planejamento estratégico',
-        'Implementação de tecnologia',
-      ],
-      icon: Building2,
-      slug: 'empresas',
-      color: 'from-blue-500 to-cyan-500',
-    },
-    {
-      id: 3,
-      title: 'Consultoria Órgãos Públicos',
-      description: 'Apoiamos prefeituras e entidades públicas na modernização da gestão, diagnóstico fiscal e implantação de práticas inovadoras, gerando mais eficiência, transparência e impacto social.',
-      features: [
-        'Modernização da gestão administrativa',
-        'Diagnóstico fiscal e arrecadação',
-        'Implementação de práticas de eficiência',
-        'Suporte em políticas públicas',
-      ],
-      icon: Landmark,
-      slug: 'orgaos-publicos',
-      color: 'from-emerald-500 to-teal-500',
-    },
-  ];
-
-  return (
-    <section className="py-20 bg-black text-white relative overflow-hidden">
+  const services = [{
+    id: 1,
+    title: 'Consultoria Pessoa Física',
+    description: 'Auxiliamos pessoas a organizarem suas finanças e tomarem decisões estratégicas para garantir mais segurança, eficiência e crescimento patrimonial.',
+    features: ['Planejamento financeiro pessoal', 'Estruturação de investimentos', 'Planejamento tributário', 'Assessoria em previdência'],
+    icon: User,
+    slug: 'pessoa-fisica',
+    color: 'from-purple-500 to-pink-500'
+  }, {
+    id: 2,
+    title: 'Consultoria Empresas',
+    description: 'Oferecemos soluções em gestão, eficiência tributária e tecnologia, ajudando empresas a reduzir custos, crescer de forma sustentável e se manterem competitivas no mercado.',
+    features: ['Gestão e otimização financeira', 'Diagnóstico de processos internos', 'Planejamento estratégico', 'Implementação de tecnologia'],
+    icon: Building2,
+    slug: 'empresas',
+    color: 'from-blue-500 to-cyan-500'
+  }, {
+    id: 3,
+    title: 'Consultoria Órgãos Públicos',
+    description: 'Apoiamos prefeituras e entidades públicas na modernização da gestão, diagnóstico fiscal e implantação de práticas inovadoras, gerando mais eficiência, transparência e impacto social.',
+    features: ['Modernização da gestão administrativa', 'Diagnóstico fiscal e arrecadação', 'Implementação de práticas de eficiência', 'Suporte em políticas públicas'],
+    icon: Landmark,
+    slug: 'orgaos-publicos',
+    color: 'from-emerald-500 to-teal-500'
+  }];
+  return <section className="py-20 bg-black text-white relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-10 left-10 w-64 h-64 border border-golden rounded-full" />
@@ -73,13 +51,8 @@ const ServicesSection = () => {
         </ScrollAnimation>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-          {services.map((service, index) => (
-            <ScrollAnimation
-              key={service.id}
-              animation="slide-up"
-              delay={index * 200}
-            >
-              <Card className="group bg-black/80 backdrop-blur-sm border-golden/20 rounded-3xl overflow-hidden hover-lift h-full">
+          {services.map((service, index) => <ScrollAnimation key={service.id} animation="slide-up" delay={index * 200}>
+              <Card className="group bg-gradient-to-br from-golden/10 to-transparent border-golden/20 rounded-3xl overflow-hidden hover-lift h-full">
                 <div className="relative">
                   <div className={`h-48 bg-gradient-to-r ${service.color} flex items-center justify-center relative overflow-hidden`}>
                     <service.icon className="w-16 h-16 text-white z-10" />
@@ -93,22 +66,20 @@ const ServicesSection = () => {
                   </div>
                 </div>
                 
-                <CardContent className="p-8 pt-12 text-white">
+                <CardContent className="p-8 pt-12 bg-slate-50">
                   <h3 className="text-2xl font-bold text-golden mb-4 text-center">
                     {service.title}
                   </h3>
                   
-                  <p className="text-white/90 leading-relaxed mb-6 text-center">
+                  <p className="leading-relaxed mb-6 text-center text-slate-500">
                     {service.description}
                   </p>
                   
                   <div className="space-y-3 mb-8">
-                    {service.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center text-white/80">
+                    {service.features.map((feature, idx) => <div key={idx} className="flex items-center text-white/80">
                         <div className="w-2 h-2 bg-golden rounded-full mr-3 flex-shrink-0" />
-                        <span className="text-white">{feature}</span>
-                      </div>
-                    ))}
+                        <span className="text-slate-500">{feature}</span>
+                      </div>)}
                   </div>
                   
                   <Button variant="hero" className="w-full group" asChild>
@@ -119,8 +90,7 @@ const ServicesSection = () => {
                   </Button>
                 </CardContent>
               </Card>
-            </ScrollAnimation>
-          ))}
+            </ScrollAnimation>)}
         </div>
 
         <ScrollAnimation animation="scale-in" delay={600}>
@@ -134,8 +104,6 @@ const ServicesSection = () => {
           </div>
         </ScrollAnimation>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ServicesSection;
