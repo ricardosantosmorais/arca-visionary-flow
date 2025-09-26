@@ -79,7 +79,7 @@ const ServicesSection = () => {
               animation="slide-up"
               delay={index * 200}
             >
-              <Card className="group bg-gradient-to-br from-golden/10 to-transparent border-golden/20 rounded-3xl overflow-hidden hover-lift h-full">
+              <Card className="group bg-black/80 backdrop-blur-sm border-golden/20 rounded-3xl overflow-hidden hover-lift h-full">
                 <div className="relative">
                   <div className={`h-48 bg-gradient-to-r ${service.color} flex items-center justify-center relative overflow-hidden`}>
                     <service.icon className="w-16 h-16 text-white z-10" />
@@ -93,7 +93,7 @@ const ServicesSection = () => {
                   </div>
                 </div>
                 
-                <CardContent className="p-8 pt-12">
+                <CardContent className="p-8 pt-12 text-white">
                   <h3 className="text-2xl font-bold text-golden mb-4 text-center">
                     {service.title}
                   </h3>
@@ -106,7 +106,7 @@ const ServicesSection = () => {
                     {service.features.map((feature, idx) => (
                       <div key={idx} className="flex items-center text-white/80">
                         <div className="w-2 h-2 bg-golden rounded-full mr-3 flex-shrink-0" />
-                        <span>{feature}</span>
+                        <span className="text-white">{feature}</span>
                       </div>
                     ))}
                   </div>
