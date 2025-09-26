@@ -1,43 +1,58 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { 
-  Instagram, 
-  Linkedin, 
-  Mail, 
-  Phone, 
-  MapPin,
-  Facebook,
-  Twitter,
-  MessageCircle
-} from 'lucide-react';
-
+import { Instagram, Linkedin, Mail, Phone, MapPin, Facebook, Twitter, MessageCircle } from 'lucide-react';
 const Footer = () => {
-  const quickLinks = [
-    { name: 'Início', path: '/' },
-    { name: 'Insights', path: '/insights' },
-    { name: 'Serviços', path: '/servicos' },
-    { name: 'Diferenciais', path: '/diferenciais' },
-    { name: 'Quem Somos', path: '/quem-somos' },
-    { name: 'Trabalhe Conosco', path: '/trabalhe-conosco' },
-    { name: 'Contato', path: '/contato' },
-  ];
-
-  const services = [
-    { name: 'Consultoria Pessoa Física', path: '/servicos/pessoa-fisica' },
-    { name: 'Consultoria Empresas', path: '/servicos/empresas' },
-    { name: 'Consultoria Órgãos Públicos', path: '/servicos/orgaos-publicos' },
-  ];
-
-  const socialLinks = [
-    { icon: Instagram, href: '#', label: 'Instagram' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-  ];
-
-  return (
-    <footer className="bg-secondary text-white">
+  const quickLinks = [{
+    name: 'Início',
+    path: '/'
+  }, {
+    name: 'Insights',
+    path: '/insights'
+  }, {
+    name: 'Serviços',
+    path: '/servicos'
+  }, {
+    name: 'Diferenciais',
+    path: '/diferenciais'
+  }, {
+    name: 'Quem Somos',
+    path: '/quem-somos'
+  }, {
+    name: 'Trabalhe Conosco',
+    path: '/trabalhe-conosco'
+  }, {
+    name: 'Contato',
+    path: '/contato'
+  }];
+  const services = [{
+    name: 'Consultoria Pessoa Física',
+    path: '/servicos/pessoa-fisica'
+  }, {
+    name: 'Consultoria Empresas',
+    path: '/servicos/empresas'
+  }, {
+    name: 'Consultoria Órgãos Públicos',
+    path: '/servicos/orgaos-publicos'
+  }];
+  const socialLinks = [{
+    icon: Instagram,
+    href: '#',
+    label: 'Instagram'
+  }, {
+    icon: Linkedin,
+    href: '#',
+    label: 'LinkedIn'
+  }, {
+    icon: Facebook,
+    href: '#',
+    label: 'Facebook'
+  }, {
+    icon: Twitter,
+    href: '#',
+    label: 'Twitter'
+  }];
+  return <footer className="bg-secondary text-white">
       {/* Main Footer Content */}
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -80,16 +95,11 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold text-golden mb-6">Links Rápidos</h3>
             <ul className="space-y-3">
-              {quickLinks.map((link) => (
-                <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    className="text-white/80 hover:text-golden transition-colors"
-                  >
+              {quickLinks.map(link => <li key={link.path}>
+                  <Link to={link.path} className="text-white/80 hover:text-golden transition-colors">
                     {link.name}
                   </Link>
-                </li>
-              ))}
+                </li>)}
             </ul>
           </div>
 
@@ -97,16 +107,11 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold text-golden mb-6">Nossos Serviços</h3>
             <ul className="space-y-3">
-              {services.map((service) => (
-                <li key={service.path}>
-                  <Link
-                    to={service.path}
-                    className="text-white/80 hover:text-golden transition-colors"
-                  >
+              {services.map(service => <li key={service.path}>
+                  <Link to={service.path} className="text-white/80 hover:text-golden transition-colors">
                     {service.name}
                   </Link>
-                </li>
-              ))}
+                </li>)}
             </ul>
           </div>
 
@@ -120,11 +125,7 @@ const Footer = () => {
               </p>
               
               <div className="flex flex-col space-y-3">
-                <input
-                  type="email"
-                  placeholder="Seu e-mail"
-                  className="px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-golden focus:ring-1 focus:ring-golden"
-                />
+                <input type="email" placeholder="Seu e-mail" className="px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:border-golden focus:ring-1 focus:ring-golden" />
                 <Button variant="hero" size="sm" className="w-full">
                   Inscrever-se
                 </Button>
@@ -135,16 +136,9 @@ const Footer = () => {
             <div>
               <h4 className="text-sm font-semibold text-golden mb-3">Redes Sociais</h4>
               <div className="flex space-x-3">
-                {socialLinks.map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.href}
-                    className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-golden hover:text-black transition-all duration-300 hover:scale-110"
-                    aria-label={social.label}
-                  >
+                {socialLinks.map((social, index) => <a key={index} href={social.href} className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-golden hover:text-black transition-all duration-300 hover:scale-110" aria-label={social.label}>
                     <social.icon className="w-5 h-5" />
-                  </a>
-                ))}
+                  </a>)}
               </div>
             </div>
           </div>
@@ -180,20 +174,10 @@ const Footer = () => {
 
       {/* Floating CTA */}
       <div className="fixed bottom-6 right-6 z-40">
-        <Button
-          variant="hero"
-          size="lg"
-          className="rounded-full shadow-golden animate-float"
-          asChild
-        >
-          <Link to="/contato">
-            <MessageCircle className="w-5 h-5 mr-2" />
-            Fale Conosco
-          </Link>
+        <Button variant="hero" size="lg" className="rounded-full shadow-golden animate-float" asChild>
+          
         </Button>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
