@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import ScrollAnimation from './ScrollAnimation';
-import { ArrowRight, PlayCircle } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import heroIllustration from '@/assets/hero-illustration.png';
 
 const HeroSection = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -20,7 +21,23 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen bg-gradient-hero flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen bg-black flex items-center justify-center overflow-hidden">
+      {/* Parallax Hero Illustration */}
+      <div className="absolute inset-0 flex items-center justify-end pr-8 lg:pr-16">
+        <div 
+          className="w-96 h-96 lg:w-[500px] lg:h-[500px] opacity-20 lg:opacity-30"
+          style={{
+            transform: `translate(${mousePosition.x * 30}px, ${mousePosition.y * 20}px)`,
+          }}
+        >
+          <img 
+            src={heroIllustration} 
+            alt="Business Analytics Illustration" 
+            className="w-full h-full object-contain"
+          />
+        </div>
+      </div>
+
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div 
@@ -76,17 +93,12 @@ const HeroSection = () => {
           </ScrollAnimation>
 
           <ScrollAnimation animation="scale-in" delay={600}>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12">
+            <div className="flex justify-center mb-12">
               <Button variant="hero" size="xl" asChild className="group">
                 <Link to="/contato">
                   Fale Conosco
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Link>
-              </Button>
-              
-              <Button variant="nav" size="xl" className="group">
-                <PlayCircle className="w-5 h-5 mr-2" />
-                Assistir Vídeo
               </Button>
             </div>
           </ScrollAnimation>

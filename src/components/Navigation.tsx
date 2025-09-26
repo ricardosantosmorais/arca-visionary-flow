@@ -1,13 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Menu, X, ChevronDown } from 'lucide-react';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+import { Menu, X } from 'lucide-react';
 
 interface NavigationProps {
   isScrolled?: boolean;
@@ -35,42 +29,13 @@ const Navigation = ({ isScrolled = false }: NavigationProps) => {
 
   const navItems = [
     { name: 'Início', path: '/' },
-    {
-      name: 'Insights',
-      path: '/insights',
-      submenu: [
-        { name: 'Todos os Insights', path: '/insights' },
-        { name: 'Cybersegurança', path: '/insights/cyberseguranca' },
-        { name: 'Gestão Fiscal', path: '/insights/gestao-fiscal' },
-        { name: 'Agro 4.0', path: '/insights/agro-4.0' },
-      ],
-    },
-    {
-      name: 'Serviços',
-      path: '/servicos',
-      submenu: [
-        { name: 'Pessoa Física', path: '/servicos/pessoa-fisica' },
-        { name: 'Empresas', path: '/servicos/empresas' },
-        { name: 'Órgãos Públicos', path: '/servicos/orgaos-publicos' },
-      ],
-    },
+    { name: 'Insights', path: '/insights' },
+    { name: 'Serviços', path: '/servicos' },
     { name: 'Diferenciais', path: '/diferenciais' },
-    {
-      name: 'Quem Somos',
-      path: '/quem-somos',
-      submenu: [
-        { name: 'Nossa História', path: '/quem-somos' },
-        { name: 'Equipe', path: '/quem-somos/equipe' },
-      ],
-    },
+    { name: 'Quem Somos', path: '/quem-somos' },
     { name: 'Trabalhe Conosco', path: '/trabalhe-conosco' },
   ];
 
-  const languages = [
-    { code: 'PT', name: 'Português' },
-    { code: 'EN', name: 'English' },
-    { code: 'ES', name: 'Español' },
-  ];
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navBackground}`}>
@@ -90,53 +55,16 @@ const Navigation = ({ isScrolled = false }: NavigationProps) => {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
             {navItems.map((item) => (
-              <div key={item.name}>
-                {item.submenu ? (
-                  <DropdownMenu>
-                    <DropdownMenuTrigger className={`flex items-center space-x-1 ${textColor} hover:text-golden transition-colors font-medium`}>
-                      <span>{item.name}</span>
-                      <ChevronDown className="w-4 h-4" />
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent className="bg-black/95 backdrop-blur-md border-white/10">
-                      {item.submenu.map((subItem) => (
-                        <DropdownMenuItem key={subItem.path} asChild>
-                          <Link
-                            to={subItem.path}
-                            className="text-white hover:text-golden transition-colors"
-                          >
-                            {subItem.name}
-                          </Link>
-                        </DropdownMenuItem>
-                      ))}
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                ) : (
-                  <Link
-                    to={item.path}
-                    className={`${textColor} hover:text-golden transition-colors font-medium ${
-                      location.pathname === item.path ? 'text-golden' : ''
-                    }`}
-                  >
-                    {item.name}
-                  </Link>
-                )}
-              </div>
+              <Link
+                key={item.name}
+                to={item.path}
+                className={`${textColor} hover:text-golden transition-colors font-medium ${
+                  location.pathname === item.path ? 'text-golden' : ''
+                }`}
+              >
+                {item.name}
+              </Link>
             ))}
-
-            {/* Language Selector */}
-            <DropdownMenu>
-              <DropdownMenuTrigger className={`flex items-center space-x-1 ${textColor} hover:text-golden transition-colors font-medium`}>
-                <span>PT</span>
-                <ChevronDown className="w-4 h-4" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-black/95 backdrop-blur-md border-white/10">
-                {languages.map((lang) => (
-                  <DropdownMenuItem key={lang.code} className="text-white hover:text-golden">
-                    {lang.name}
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
 
             {/* CTA Button */}
             <Button variant="hero" size="default" asChild>
@@ -158,29 +86,14 @@ const Navigation = ({ isScrolled = false }: NavigationProps) => {
           <div className="lg:hidden bg-black/98 backdrop-blur-md border-t border-white/10 animate-fade-in">
             <div className="py-6 space-y-4">
               {navItems.map((item) => (
-                <div key={item.name}>
-                  <Link
-                    to={item.path}
-                    className="block px-4 py-2 text-white hover:text-golden transition-colors font-medium"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                  {item.submenu && (
-                    <div className="pl-6 space-y-2">
-                      {item.submenu.map((subItem) => (
-                        <Link
-                          key={subItem.path}
-                          to={subItem.path}
-                          className="block py-1 text-white/80 hover:text-golden transition-colors text-sm"
-                          onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                          {subItem.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  className="block px-4 py-2 text-white hover:text-golden transition-colors font-medium"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {item.name}
+                </Link>
               ))}
               
               <div className="px-4 pt-4">
