@@ -18,82 +18,96 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen bg-black pt-24 flex items-center overflow-hidden">
+    <section className="relative min-h-screen bg-black pt-20 flex items-center">
       {/* Main Content */}
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
+      <div className="container mx-auto px-4">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[80vh]">
           {/* Left Content */}
-          <div className="lg:pr-8">
+          <div className="flex flex-col justify-center space-y-6">
             <ScrollAnimation animation="fade-in" delay={200}>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-                <span className="text-golden">Transformando</span>{' '}
-                <span className="text-white">negócios,</span>
-                <br />
-                <span className="text-white">potencializando</span>{' '}
-                <span className="text-golden">pessoas</span>{' '}
-                <span className="text-white">e criando</span>
-                <br />
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                <span className="text-white">Transformando</span>{' '}
+                <span className="text-golden">negócios</span>
+                <span className="text-white">, potencializando</span>{' '}
+                <span className="text-golden">pessoas</span>
+                <span className="text-white"> e criando</span>{' '}
                 <span className="text-golden">impacto positivo</span>{' '}
-                <span className="text-white">para o Brasil.</span>
+                <span className="text-white">para o</span>{' '}
+                <span className="text-golden">Brasil</span>
               </h1>
             </ScrollAnimation>
 
             <ScrollAnimation animation="slide-up" delay={400}>
-              <div className="mb-8">
-                <p className="text-lg md:text-xl text-white/90 leading-relaxed mb-4">
-                  Arca Consultoria é uma{' '}
-                  <strong className="text-golden">empresa especializada em soluções estratégicas para empresas e órgãos públicos.</strong>
-                </p>
-                <p className="text-base md:text-lg text-white/80 leading-relaxed">
-                  Nosso foco é entregar resultados concretos, sustentáveis e de alto impacto para nossos clientes. 
-                  Tudo isso, <strong className="text-golden">de forma totalmente personalizada.</strong>
-                </p>
-              </div>
+              <p className="text-lg md:text-xl text-white/80 leading-relaxed max-w-xl">
+                Arca Consultoria é uma empresa especializada em soluções estratégicas para empresas e órgãos públicos. 
+                Nosso foco é entregar resultados concretos, sustentáveis e de alto impacto.
+              </p>
             </ScrollAnimation>
 
             <ScrollAnimation animation="fade-in" delay={600}>
-              <div className="mb-8">
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Button variant="hero" size="lg" asChild>
                   <Link to="/contato">
                     Fale Conosco
-                    <ArrowRight className="w-5 h-5 ml-2" />
+                    <ArrowRight className="w-4 h-4 ml-2" />
                   </Link>
+                </Button>
+                
+                <Button variant="outline" size="lg" className="bg-transparent border-white/30 text-white hover:bg-white/10">
+                  Conheça Nossos Serviços
                 </Button>
               </div>
             </ScrollAnimation>
 
             <ScrollAnimation animation="fade-in" delay={800}>
-              <div>
-                <p className="text-golden text-lg md:text-xl font-bold">
-                  Arca. Porque o futuro não espera!
-                </p>
+              <div className="flex items-center gap-4 pt-2">
+                <div className="flex items-center gap-2 text-sm text-white/60">
+                  <div className="w-2 h-2 bg-golden rounded-full"></div>
+                  <span>Soluções personalizadas</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm text-white/60">
+                  <div className="w-2 h-2 bg-golden rounded-full"></div>
+                  <span>Resultados concretos</span>
+                </div>
               </div>
             </ScrollAnimation>
           </div>
 
           {/* Right Content - Hero Illustration */}
-          <div className="flex justify-center lg:justify-end">
+          <div className="flex justify-center lg:justify-end relative">
+            {/* Badge flutuante */}
+            <div className="absolute -top-4 -right-4 lg:-top-6 lg:-right-6 z-20">
+              <div className="bg-golden text-black px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+                ⭐ Excelência comprovada
+              </div>
+            </div>
+            
+            {/* Imagem principal */}
             <div 
-              className="w-80 h-80 lg:w-[450px] lg:h-[450px] relative"
+              className="w-full max-w-lg lg:max-w-xl relative"
               style={{
-                transform: `translateY(${scrollY * 0.1}px)`,
+                transform: `translateY(${scrollY * 0.05}px)`,
               }}
             >
-              <img 
-                src={heroIllustration} 
-                alt="Business Analytics Illustration" 
-                className="w-full h-full object-contain drop-shadow-2xl"
-              />
+              <div className="bg-gradient-to-br from-white/10 to-white/5 rounded-3xl p-8 backdrop-blur-sm border border-white/20">
+                <img 
+                  src={heroIllustration} 
+                  alt="Business Analytics and Consulting Illustration" 
+                  className="w-full h-auto object-contain"
+                />
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-golden rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-golden rounded-full mt-2 animate-pulse"></div>
-        </div>
+      {/* Tagline na parte inferior */}
+      <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2">
+        <ScrollAnimation animation="fade-in" delay={1000}>
+          <p className="text-golden text-lg font-semibold text-center">
+            Arca. Porque o futuro não espera!
+          </p>
+        </ScrollAnimation>
       </div>
     </section>
   );
