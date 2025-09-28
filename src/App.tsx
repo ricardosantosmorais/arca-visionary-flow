@@ -9,6 +9,7 @@ import Layout from "./components/Layout";
 import Index from "./pages/Index";
 import Insights from "./pages/Insights";
 import Servicos from "./pages/Servicos";
+import Diferenciais from "./pages/Diferenciais";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => (
           <Route path="/" element={<Layout transparentNav><Index /></Layout>} />
           <Route path="/insights" element={<Layout><Insights /></Layout>} />
           <Route path="/servicos" element={<Layout><Servicos /></Layout>} />
+          <Route path="/diferenciais" element={<Layout><Diferenciais /></Layout>} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<Layout><NotFound /></Layout>} />
         </Routes>
