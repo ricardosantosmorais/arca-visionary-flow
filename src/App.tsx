@@ -7,6 +7,7 @@ import Layout from "./components/Layout";
 
 // Pages
 import Index from "./pages/Index";
+import Insights from "./pages/Insights";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -19,6 +20,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout transparentNav><Index /></Layout>} />
+          <Route path="/insights" element={<Layout><Insights /></Layout>} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<Layout><NotFound /></Layout>} />
         </Routes>
