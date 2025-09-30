@@ -84,9 +84,10 @@ const HeroSection = () => {
             
             {/* Imagem principal */}
             <div 
-              className="w-full max-w-lg lg:max-w-xl relative"
+              className="w-full max-w-lg lg:max-w-xl relative parallax"
               style={{
-                transform: `translateY(${scrollY * 0.05}px)`,
+                transform: `translateY(${scrollY * 0.3}px)`,
+                transition: 'transform 0.1s ease-out',
               }}
             >
               <div className="bg-gradient-to-br from-white/10 to-white/5 rounded-3xl p-8 backdrop-blur-sm border border-white/20">
